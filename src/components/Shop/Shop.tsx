@@ -4,18 +4,21 @@ import BreadCrumb from '../../common/BreadCrumb';
 import ItemCard from '../../common/ItemCard';
 import Grid from '@mui/material/Grid';
 import TotalView from '../../common/TotalView';
-import { useAppDispatch } from '../../store/hook';
-import { getAllShopItems } from '../../store/reducers/cartItem';
+import { useAppDispatch, useAppSelector } from '../../store/hook';
+import { getAllShopItems, updateShopItems } from '../../store/reducers/cartItem';
+import { useGetItemsMutation } from '../../store/api/shopApi';
+import { Thing } from '../../type';
 
 export default function Shop(): JSX.Element {
 
     const dispatch = useAppDispatch()
 
-    const shopItems = dispatch(getAllShopItems)
+    const shopItems = useAppSelector(getAllShopItems)
 
     useEffect(() => {
         const fetchData = async () => {
-            // await 
+            const items = await useGetItemsMutation().unwrap();
+            dispatch(updateShopItems(items))
         }
     }, [])
 
@@ -26,7 +29,9 @@ export default function Shop(): JSX.Element {
                 <Box sx={{ p: 2 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={8}>
-                            <ItemCard />
+                            {shopItems.map((el: Thing) => {
+                                <ItemCard key={el.id} item={el} />
+                            })}
                         </Grid>
                         <Grid item xs={4}>
                             <TotalView />

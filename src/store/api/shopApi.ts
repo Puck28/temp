@@ -3,23 +3,23 @@ import { apiSlice } from './baseApi'
 export const shopApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getItems: builder.mutation({
-            query: (credentials) => ({
-                url: '/getItems',
-                method: 'POST',
-                body: credentials,
+            query: () => ({
+                url: '/ShoppingCart/products',
+                method: 'GET'
             }),
         }),
-        getCategories: builder.mutation({
-            query: (credentials) => ({
-                url: '/getCategories',
-                method: 'POST',
-                body: credentials,
+        deleteItem: builder.mutation({
+            query: (data: string) => ({
+                url: '/ShoppingCart/products',
+                method: 'DELETE',
+                body: data 
             }),
         }),
+
     }),
 })
 
 export const { 
-    useGetCategoriesMutation,
-    useGetItemsMutation
+    useGetItemsMutation,
+    useDeleteItemMutation
 } = shopApi
