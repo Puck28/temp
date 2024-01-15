@@ -6,8 +6,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Thing } from '../../type';
-import { useAppDispatch } from '../../store/hook';
+import { useAppDispatch, useAppSelector } from '../../store/hook';
 import { addCartItem } from '../../store/reducers/cartItem';
+import { getUsedGuid } from '../../store/reducers/auth';
+import { useAddItemMutation } from '../../store/api/shopApi';
 
 type Props = {
     item: Thing
@@ -15,9 +17,18 @@ type Props = {
 
 export default function ItemCard({ item }: Props) {
     const dispatch = useAppDispatch()
+    const usedGuid = useAppSelector(getUsedGuid)
+    const [addItem] = useAddItemMutation()
 
-    const addItem = () => {
-        dispatch(addCartItem(item.id))
+    const add_cartItem = async () => {
+        const state = await addItem({
+            ProductId: item.id,
+            UserGuid: usedGuid
+        }).unwrap()
+        if(state.Name === 'Success')
+            dispatch(addCartItem(item.id))
+        else
+            alert('failed')
     }
 
     return (
@@ -41,7 +52,7 @@ export default function ItemCard({ item }: Props) {
                     </Typography>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'right', p: 1 }}>
-                    <Button variant="contained" onClick={addItem} >Place an Order</Button>
+                    <Button variant="contained" onClick={add_cartItem} >Place an Order</Button>
                 </Box>
             </Box>
         </Card>

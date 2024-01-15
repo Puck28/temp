@@ -4,6 +4,7 @@ import './App.css';
 import { Suspense, lazy, LazyExoticComponent } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { useCreateUserMutation } from './store/api/userApi';
+import { useGetInitMutation } from './store/api/shopApi';
 
 const Loading: LazyExoticComponent<() => JSX.Element> = lazy(
   () => import('./common/Loading')
@@ -36,15 +37,6 @@ const router = createBrowserRouter([
     ]
   }
 ])
-
-useEffect(() => {
-  const fetchUser = async () => {
-    const user = await useCreateUserMutation().upwrap()
-    
-  }
-
-  fetchUser()
-}, [])
 
 export function App(): JSX.Element {
   return (

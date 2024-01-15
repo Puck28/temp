@@ -1,7 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: `${process.env.REACT_APP_BASE_URL}/api/v2`,
+    baseUrl: `${process.env.REACT_APP_BASE_URL}/api`,
+    credentials: 'include',
+    prepareHeaders: (headers, { getState, endpoint }) => {
+        headers.set('Access-Control-Allow-Origin', '*')
+        return headers
+    },
 })
 
 const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {

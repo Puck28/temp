@@ -1,16 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '..'
-import { Thing, CartThing } from '../../type'
+import { Thing, CartThing, CartChangePayload } from '../../type'
 
 export interface Shop {
-    cartItemCount: 0,
     cartItems: CartThing[],
     shopItems: Thing[] 
 }
 
 const initialState: Shop = {
-    cartItemCount: 0,
     cartItems: [],
     shopItems: []
 }
@@ -51,6 +49,14 @@ export const cartItem = createSlice({
                 return el
             })}      
         },
+        changeCartItem: (state, action: PayloadAction<CartChangePayload>) => {
+            return {...state, carItems: state.cartItems.map(el => {
+                if(el.id === action.payload.id){
+                  el.quantity = action.payload.value
+                }
+                return el
+            })}
+        }
     },
 })
 
@@ -62,13 +68,14 @@ const makeCartItem = (item: Thing): CartThing => {
 }
 
 const calcTotalPrice = (cartItems: CartThing[], shopItems: Thing[]): string => {
-    const currency = shopItems ? shopItems[0].currency : "$"
-    const totalPrice = cartItems.map(el => {
-        const temp = shopItems.find(item => item.id === el.id);
-        return temp ? temp.price * el.quantity : 0 
-    }).reduce((price1, price2) => price1 + price2, 0)
+    // const currency = shopItems ? shopItems[0].currency : "$"
+    // const totalPrice = cartItems.map(el => {
+    //     const temp = shopItems.find(item => item.id === el.id);
+    //     return temp ? temp.price * el.quantity : 0 
+    // }).reduce((price1, price2) => price1 + price2, 0)
 
-    return currency + totalPrice
+    // return currency + totalPrice
+    return "tests"
 }
 
 export const { 
@@ -76,11 +83,13 @@ export const {
     addCartItem, 
     deleteCartItem, 
     increaseCartItem, 
-    reduceCartItem 
+    reduceCartItem,
+    changeCartItem
 } = cartItem.actions
 
 export const getAllShopItems = (state: RootState) => state.cartItem.shopItems
 export const getAllCartItems = (state: RootState) => state.cartItem.cartItems
 export const getTotalPrice = (state: RootState) => calcTotalPrice(state.cartItem.cartItems, state.cartItem.shopItems)
+export const getTotalCount = (state: RootState) => state.cartItem.cartItems.length
 
 export default cartItem.reducer

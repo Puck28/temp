@@ -1,3 +1,9 @@
+export type InitData = {
+    LogoImg: string,
+    UsedGuid: string,
+    UserName: string,
+}
+
 export type Thing = {
     id: number,
     name: string,
@@ -19,4 +25,20 @@ export type Thing = {
 export type CartThing = {
     id: number,
     quantity: number
+}
+
+export type CartItemPayload = {
+    ProductId: number,
+    UserGuid: string
+}
+
+export type CartItemChangePayload = {
+    ProductId: number,
+    UserGuid: string,
+    value: number
+}
+
+export type CartChangePayload = {
+    id: number,
+    value: number
 }

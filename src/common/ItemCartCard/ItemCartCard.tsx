@@ -9,9 +9,10 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Thing } from '../../type';
 import { useAppDispatch, useAppSelector } from '../../store/hook';
-import { deleteCartItem, increaseCartItem, reduceCartItem } from '../../store/reducers/cartItem';
-import { useDeleteItemMutation } from '../../store/api/shopApi';
-import { getUserGUID } from '../../store/reducers/auth';
+import { changeCartItem, deleteCartItem, increaseCartItem, reduceCartItem } from '../../store/reducers/cartItem';
+import { useAddItemMutation, useChangeItemMutation, useDeleteItemMutation, useReduceItemMutation } from '../../store/api/shopApi';
+import { getUsedGuid } from '../../store/reducers/auth';
+import { Input } from '@mui/material';
 
 type Props = {
     item: Thing,
@@ -21,22 +22,56 @@ type Props = {
 export default function ItemCartCard({ item, count }: Props) {
 
     const dispatch = useAppDispatch()
-    const userGUID = useAppSelector(getUserGUID)
-
-    const increaseItem = () => {
-        dispatch(increaseCartItem(item.id))
+    const usedGuid = useAppSelector(getUsedGuid)
+    const [addItem] = useAddItemMutation()
+    const [reduceItem] = useReduceItemMutation()
+    const [deleteItem] = useDeleteItemMutation()
+    const [changeItem] = useChangeItemMutation()
+    const increaseItem = async () => {
+        const state = await addItem({
+            ProductId: item.id,
+            UserGuid: usedGuid
+        }).unwrap()
+        if(state.Name === 'Success')
+            dispatch(increaseCartItem(item.id))
+        else
+            alert('failed')
     }
 
-    const reduceItem = () => {
-        dispatch(reduceCartItem(item.id))
+    const reduce_item = async () => {
+        const state = await reduceItem({
+            ProductId: item.id,
+            UserGuid: usedGuid
+        }).unwrap()
+        if(state.Name === 'Success')
+            dispatch(reduceCartItem(item.id))
+        else
+            alert('failed')
+        
     }
 
-    const deleteItem = async () => {
-        await useDeleteItemMutation({
-            productId: item.id,
-            userGUID: userGUID
-        });
-        dispatch(deleteCartItem(item.id))
+    const delete_item = async () => {
+        const state = await deleteItem({
+            ProductId: item.id,
+            UserGuid: usedGuid
+        }).unwrap()
+        if(state.Name === 'Success')
+            dispatch(deleteCartItem(item.id))
+        else
+            alert('failed')
+        
+    }
+
+    const changeValue = async (e: any) => {
+        const state = await changeItem({
+            ProductId: item.id,
+            UserGuid: usedGuid,
+            value: parseInt(e.target.value)
+        }).unwrap()
+        if(state.Name === 'Success')
+            dispatch(changeCartItem({id: item.id, value: parseInt(e.target.value)}))
+        else
+            alert('failed')
     }
 
     return (
@@ -69,9 +104,10 @@ export default function ItemCartCard({ item, count }: Props) {
                     </Grid>
                     <Grid item xs={12}>
                         <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                            <Button onClick={reduceItem}> - </Button>
+                            <Button onClick={reduce_item}> - </Button>
+                            <Input defaultValue={count} onChange={changeValue}/>
                             <Button onClick={increaseItem}> + </Button>
-                            <Button onClick={deleteItem}><DeleteForeverIcon /></Button>
+                            <Button onClick={delete_item}><DeleteForeverIcon /></Button>
                         </ButtonGroup>       
                     </Grid>
                 </Grid>

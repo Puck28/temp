@@ -9,7 +9,8 @@ export const store = configureStore({
         cartItem: cartItemReducer,
         auth: authReducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+    devTools: true,
 })
 
 export type RootState = ReturnType<typeof store.getState>
