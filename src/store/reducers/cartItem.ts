@@ -74,14 +74,13 @@ const makeCartItem = (item: Thing): CartThing => {
 }
 
 const calcTotalPrice = (cartItems: CartThing[], shopItems: Thing[]): string => {
-    // const currency = shopItems ? shopItems[0].currency : "$"
-    // const totalPrice = cartItems.map(el => {
-    //     const temp = shopItems.find(item => item.id === el.id);
-    //     return temp ? temp.price * el.quantity : 0 
-    // }).reduce((price1, price2) => price1 + price2, 0)
+    const currency = shopItems ? shopItems[0].Сurrency : "$"
+    const totalPrice = cartItems.map(el => {
+        const temp = shopItems.find(item => item.Id === el.id);
+        return temp ? temp.Price * el.quantity : 0 
+    }).reduce((price1, price2) => price1 + price2, 0)
 
-    // return currency + totalPrice
-    return "tests"
+    return currency + totalPrice
 }
 
 export const { 
