@@ -74,7 +74,7 @@ const makeCartItem = (item: Thing): CartThing => {
 }
 
 const calcTotalPrice = (cartItems: CartThing[], shopItems: Thing[]): string => {
-    const currency = shopItems ? shopItems[0].Сurrency : "$"
+    const currency = shopItems[0] ? shopItems[0].Сurrency : "$"
     const totalPrice = cartItems.map(el => {
         const temp = shopItems.find(item => item.Id === el.id);
         return temp ? temp.Price * el.quantity : 0 
