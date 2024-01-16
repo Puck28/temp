@@ -114,7 +114,7 @@ export default function Header(): JSX.Element {
                               
                             </Typography>
                         </Button>
-                        <IconButton size="large" aria-label="show 4 new mails" color="white">
+                        <IconButton size="large" aria-label="show 4 new mails" sx={{color: 'white'}}>
                             {
                                 totalCount > 0 ?
                                     <Badge badgeContent={totalCount} color="error">
