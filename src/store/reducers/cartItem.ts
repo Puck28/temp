@@ -26,7 +26,7 @@ export const cartItem = createSlice({
             if(cartItem){
                 return {...state, carItems: state.cartItems.map(el => {
                     if(el.id === action.payload){
-                        el.quantity = el.quantity + 1
+                        return {...el, quantity: el.quantity + 1}
                     }
                     return el
                 })}    
@@ -42,7 +42,7 @@ export const cartItem = createSlice({
         increaseCartItem: (state, action: PayloadAction<number>) => {
             return {...state, carItems: state.cartItems.map(el => {
                 if(el.id === action.payload){
-                    el.quantity = el.quantity + 1
+                    return {...el, quantity: el.quantity + 1}
                 }
                 return el
             })}      
@@ -50,10 +50,7 @@ export const cartItem = createSlice({
         reduceCartItem: (state, action: PayloadAction<number>) => {
             return {...state, carItems: state.cartItems.map(el => {
                 if(el.id === action.payload){
-                  el.quantity = el.quantity - 1
-                  if(el.quantity){
-                    el.quantity = el.quantity + 1
-                  }
+                    return {...el, quantity: (el.quantity - 1) > 0 ? (el.quantity - 1) : 1}
                 }
                 return el
             })}      
