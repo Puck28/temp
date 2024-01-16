@@ -105,7 +105,7 @@ export default function ItemCartCard({ item, count }: Props) {
                     <Grid item xs={12}>
                         <ButtonGroup variant="contained" aria-label="outlined primary button group">
                             <Button onClick={reduce_item}> - </Button>
-                            <Input defaultValue={count} onChange={changeValue}/>
+                            <Input defaultValue={count} sx={{width: '38px', textAlign: 'center'}} onChange={changeValue}/>
                             <Button onClick={increaseItem}> + </Button>
                             <Button onClick={delete_item}><DeleteForeverIcon /></Button>
                         </ButtonGroup>       

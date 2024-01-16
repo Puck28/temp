@@ -110,7 +110,7 @@ export default function Header(): JSX.Element {
                               component="div"
                               sx={{ justifyContent: 'center', alignItems: 'center', alignContent: 'center', color: 'white' }}
                             >
-                                <NavLink to="/" style={{color: 'white'}}>Shop</NavLink>
+                                <NavLink to="/" style={{color: 'white', textDecoration: 'none'}}>Shop</NavLink>
                               
                             </Typography>
                         </Button>
