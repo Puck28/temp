@@ -110,7 +110,7 @@ export default function Header(): JSX.Element {
                               component="div"
                               sx={{ justifyContent: 'center', alignItems: 'center', alignContent: 'center', color: 'white' }}
                             >
-                                <NavLink to="/">Shop</NavLink>
+                                <NavLink to="/" style={{color: 'white'}}>Shop</NavLink>
                               
                             </Typography>
                         </Button>
@@ -118,11 +118,11 @@ export default function Header(): JSX.Element {
                             {
                                 totalCount > 0 ?
                                     <Badge badgeContent={totalCount} color="error">
-                                        <Link href='/cart'>
+                                        <NavLink to='/cart' style={{color: 'white'}}>
                                             <AddShoppingCartIcon />
-                                        </Link>
+                                        </NavLink>
                                     </Badge> :
-                                    <NavLink to='/cart'>
+                                    <NavLink to='/cart' style={{color: 'white'}}>
                                         <AddShoppingCartIcon />
                                     </NavLink>
                             }
