@@ -84,7 +84,7 @@ export default function Header(): JSX.Element {
                 <Toolbar>
                     <CardMedia
                         component="img"
-                        sx={{ hrght: 60 }}
+                        sx={{ height: 60, width: 100 }}
                         image={ `data:image/png;base64,${logo}` }
                         alt='logo'
                     />
