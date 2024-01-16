@@ -59,7 +59,7 @@ export default function Shop(): JSX.Element {
                 <Box sx={{ p: 2 }}>
                     <Grid container spacing={4}>
                         <Grid item xs={8}>
-                            {shopItems.map((el: Thing) => <ItemCard key={el.Id} item={el} />)}
+                            {shopItems.map((el: Thing) =><Grid item> <ItemCard key={el.Id} item={el} /> </Grid>)}
                         </Grid>
                         <Grid item xs={4}>
                             <TotalView />
