@@ -85,7 +85,7 @@ export default function Header(): JSX.Element {
                     <CardMedia
                         component="img"
                         sx={{ hrght: 60 }}
-                        image={ logo }
+                        image={ `data:image/png;base64,${logo}` }
                         alt='logo'
                     />
                     <Box sx={{ flexGrow: 1 }} />
