@@ -5,7 +5,7 @@ export const userApi = apiSlice.injectEndpoints({
         createUser: builder.mutation({
             query: (integer) => ({
                 url: `/Admin/create?value=${integer}`,
-                method: 'Get'  
+                method: 'POST'  
             }),
         })
     }),
