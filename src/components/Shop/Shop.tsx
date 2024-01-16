@@ -57,7 +57,7 @@ export default function Shop(): JSX.Element {
             <Box component="main" sx={{ p: 4, flexGrow: 1 }} gap={4}>
                 <BreadCrumb link='Shop' />
                 <Box sx={{ p: 2 }}>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={4}>
                         <Grid item xs={8}>
                             {shopItems.map((el: Thing) => <ItemCard key={el.Id} item={el} />)}
                         </Grid>
