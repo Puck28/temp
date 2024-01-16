@@ -80,7 +80,7 @@ const calcTotalPrice = (cartItems: CartThing[], shopItems: Thing[]): string => {
         return temp ? (temp.Price * el.quantity) : 0 
     }).reduce((price1, price2) => price1 + price2, 0)
 
-    return currency + totalPrice
+    return currency + " " + totalPrice
 }
 
 export const { 

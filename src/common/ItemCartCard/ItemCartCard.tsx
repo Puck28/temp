@@ -78,7 +78,7 @@ export default function ItemCartCard({ item, count }: Props) {
         <Card sx={{ display: 'flex', marginBottom: '8px' }}>
             <CardMedia
                 component="img"
-                sx={{ width: 151 }}
+                sx={{ width: 150 }}
                 image={ `data:image/png;base64,${item.Images[0].Image}` }
                 alt={ item.Images[0].FileName + item.Images[0].FileExtension }
             />
