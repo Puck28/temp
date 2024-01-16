@@ -20,7 +20,7 @@ export default function Cart(): JSX.Element {
                 <Grid container spacing={2}>
                     <Grid item xs={8}>
                         {cartItems.map((el: CartThing) => {
-                            const item = shopItems.find((item: Thing) => item.id === el.id)
+                            const item = shopItems.find((item: Thing) => item.Id === el.id)
                             return item ? <ItemCartCard key={el.id} item={item} count={el.quantity} /> : null                                
                         })}
                     </Grid>

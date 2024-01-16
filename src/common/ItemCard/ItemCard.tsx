@@ -22,11 +22,11 @@ export default function ItemCard({ item }: Props) {
 
     const add_cartItem = async () => {
         const state = await addItem({
-            ProductId: item.id,
+            ProductId: item.Id,
             UserGuid: usedGuid
         }).unwrap()
         if(state.Name === 'Success')
-            dispatch(addCartItem(item.id))
+            dispatch(addCartItem(item.Id))
         else
             alert('failed')
     }
@@ -36,19 +36,19 @@ export default function ItemCard({ item }: Props) {
             <CardMedia
                 component="img"
                 sx={{ width: 151 }}
-                image={ item.images[0].image }
-                alt={ item.images[0].file_name + item.images[0].file_extension }
+                image={ item.Images[0].Image }
+                alt={ item.Images[0].FileName + item.Images[0].FileExtension }
             />
             <Box sx={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                     <Typography component="div" variant="h5">
-                        { item.name }
+                        { item.Name }
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary" component="div">
-                        { item.description }
+                        { item.Description }
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary" component="div">
-                        { item.currency + item.price + " , " + item.discounted_price }
+                        { item.Сurrency + item.Price + " , " + item.DiscountedPrice }
                     </Typography>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'right', p: 1 }}>

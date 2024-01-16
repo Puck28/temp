@@ -29,22 +29,22 @@ export default function ItemCartCard({ item, count }: Props) {
     const [changeItem] = useChangeItemMutation()
     const increaseItem = async () => {
         const state = await addItem({
-            ProductId: item.id,
+            ProductId: item.Id,
             UserGuid: usedGuid
         }).unwrap()
         if(state.Name === 'Success')
-            dispatch(increaseCartItem(item.id))
+            dispatch(increaseCartItem(item.Id))
         else
             alert('failed')
     }
 
     const reduce_item = async () => {
         const state = await reduceItem({
-            ProductId: item.id,
+            ProductId: item.Id,
             UserGuid: usedGuid
         }).unwrap()
         if(state.Name === 'Success')
-            dispatch(reduceCartItem(item.id))
+            dispatch(reduceCartItem(item.Id))
         else
             alert('failed')
         
@@ -52,11 +52,11 @@ export default function ItemCartCard({ item, count }: Props) {
 
     const delete_item = async () => {
         const state = await deleteItem({
-            ProductId: item.id,
+            ProductId: item.Id,
             UserGuid: usedGuid
         }).unwrap()
         if(state.Name === 'Success')
-            dispatch(deleteCartItem(item.id))
+            dispatch(deleteCartItem(item.Id))
         else
             alert('failed')
         
@@ -64,12 +64,12 @@ export default function ItemCartCard({ item, count }: Props) {
 
     const changeValue = async (e: any) => {
         const state = await changeItem({
-            ProductId: item.id,
+            ProductId: item.Id,
             UserGuid: usedGuid,
             value: parseInt(e.target.value)
         }).unwrap()
         if(state.Name === 'Success')
-            dispatch(changeCartItem({id: item.id, value: parseInt(e.target.value)}))
+            dispatch(changeCartItem({id: item.Id, value: parseInt(e.target.value)}))
         else
             alert('failed')
     }
@@ -79,22 +79,22 @@ export default function ItemCartCard({ item, count }: Props) {
             <CardMedia
                 component="img"
                 sx={{ width: 151 }}
-                image={ item.images[0].image }
-                alt={ item.images[0].file_name + item.images[0].file_extension }
+                image={ item.Images[0].Image }
+                alt={ item.Images[0].FileName + item.Images[0].FileExtension }
             />
             <Box sx={{ display: 'flex', width: '30%', flexDirection: 'column', padding: '0 8px 0 8px' }}>
                 <Typography component="div" variant="h5" sx={{ marginTop: 'auto', marginBottom: 'auto'}}>
-                    { item.name }
+                    { item.Name }
                 </Typography>
             </Box>
             <Box sx={{ display: 'flex', width: '100%', flexDirection: 'column', padding: '0 8px 0 8px' }}>
                 <Typography component="div" variant="body1" sx={{ marginTop: 'auto', marginBottom: 'auto'}}>
-                    { item.description }
+                    { item.Description }
                 </Typography>
             </Box>
             <Box sx={{ display: 'flex', width: '200px', flexDirection: 'column', padding: '0 8px 0 8px' }}>
                 <Typography component="div" variant="body1" sx={{ marginTop: 'auto', marginBottom: 'auto'}}>
-                    Salary: { item.currency + item.price + " , " + item.discounted_price}
+                    Salary: { item.Сurrency + item.Price + " , " + item.DiscountedPrice}
                 </Typography>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', padding: '8px', justifyContent: 'right' }}>
