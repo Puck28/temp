@@ -28,50 +28,54 @@ export default function ItemCartCard({ item, count }: Props) {
     const [deleteItem] = useDeleteItemMutation()
     const [changeItem] = useChangeItemMutation()
     const increaseItem = async () => {
-        const state = await addItem({
-            ProductId: item.Id,
-            UserGuid: usedGuid
-        }).unwrap()
-        if(state.Name === 'Success')
-            dispatch(increaseCartItem(item.Id))
-        else
-            alert('failed')
+        // const state = await addItem({
+        //     ProductId: item.Id,
+        //     UserGuid: usedGuid
+        // }).unwrap()
+        // if(state.Name === 'Success')
+        //     dispatch(increaseCartItem(item.Id))
+        // else
+        //     alert('failed')
+        dispatch(increaseCartItem(item.Id))
     }
 
     const reduce_item = async () => {
-        const state = await reduceItem({
-            ProductId: item.Id,
-            UserGuid: usedGuid
-        }).unwrap()
-        if(state.Name === 'Success')
-            dispatch(reduceCartItem(item.Id))
-        else
-            alert('failed')
-        
+        // const state = await reduceItem({
+        //     ProductId: item.Id,
+        //     UserGuid: usedGuid
+        // }).unwrap()
+        // if(state.Name === 'Success')
+        //     dispatch(reduceCartItem(item.Id))
+        // else
+        //     alert('failed')
+        dispatch(reduceCartItem(item.Id))
     }
 
     const delete_item = async () => {
-        const state = await deleteItem({
-            ProductId: item.Id,
-            UserGuid: usedGuid
-        }).unwrap()
-        if(state.Name === 'Success')
-            dispatch(deleteCartItem(item.Id))
-        else
-            alert('failed')
+        // const state = await deleteItem({
+        //     ProductId: item.Id,
+        //     UserGuid: usedGuid
+        // }).unwrap()
+        // if(state.Name === 'Success')
+        //     dispatch(deleteCartItem(item.Id))
+        // else
+        //     alert('failed')
+
+        dispatch(deleteCartItem(item.Id))
         
     }
 
     const changeValue = async (e: any) => {
-        const state = await changeItem({
-            ProductId: item.Id,
-            UserGuid: usedGuid,
-            value: parseInt(e.target.value)
-        }).unwrap()
-        if(state.Name === 'Success')
-            dispatch(changeCartItem({id: item.Id, value: parseInt(e.target.value)}))
-        else
-            alert('failed')
+        // const state = await changeItem({
+        //     ProductId: item.Id,
+        //     UserGuid: usedGuid,
+        //     value: parseInt(e.target.value)
+        // }).unwrap()
+        // if(state.Name === 'Success')
+        //     dispatch(changeCartItem({id: item.Id, value: parseInt(e.target.value)}))
+        // else
+        //     alert('failed')
+        dispatch(changeCartItem({id: item.Id, value: parseInt(e.target.value)}))
     }
 
     return (
