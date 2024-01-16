@@ -40,9 +40,10 @@ export default function Header(): JSX.Element {
     };
 
     const createAdmin = async () => {
-        const state = await createUser(1).unwrap()
-        if(state)
-            dispatch(updateAuthState(true)) 
+        // const state = await createUser(1).unwrap()
+        // if(state)
+        //     dispatch(updateAuthState(true))
+        dispatch(updateAuthState(true)) 
     }
 
     useEffect(() => {

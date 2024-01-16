@@ -21,7 +21,7 @@ export const cartItem = createSlice({
             return {...state, shopItems: action.payload}
         },
         addCartItem: (state, action: PayloadAction<number>) => {
-            const shopItem = state.shopItems.find(el => el.id === action.payload)
+            const shopItem = state.shopItems.find(el => el.Id === action.payload)
             if(shopItem)
                 return { ...state, cartItems: [...state.cartItems, makeCartItem(shopItem)]}
             else 
@@ -62,7 +62,7 @@ export const cartItem = createSlice({
 
 const makeCartItem = (item: Thing): CartThing => {
     return {
-        id: item.id,
+        id: item.Id,
         quantity: 1
     }
 }
