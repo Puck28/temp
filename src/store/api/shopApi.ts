@@ -1,4 +1,4 @@
-import { CartItemChangePayload, CartItemPayload } from '../../type'
+import { CartItemChangePayload, CartItemPayload, DiscountData } from '../../type'
 import { apiSlice } from './baseApi'
 
 export const shopApi = apiSlice.injectEndpoints({
@@ -43,6 +43,13 @@ export const shopApi = apiSlice.injectEndpoints({
                 body: data 
             }),
         }),
+        sendDiscount: builder.mutation({
+            query: (data: DiscountData) => ({
+                url: '/ShoppingCart/discount',
+                method: 'POST',
+                body: data
+            })
+        })
     }),
 })
 
@@ -52,5 +59,6 @@ export const {
     useDeleteItemMutation,
     useAddItemMutation,
     useReduceItemMutation,
-    useChangeItemMutation
+    useChangeItemMutation,
+    useSendDiscountMutation
 } = shopApi

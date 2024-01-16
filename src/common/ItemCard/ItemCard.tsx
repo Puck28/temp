@@ -19,7 +19,6 @@ export default function ItemCard({ item }: Props) {
     const dispatch = useAppDispatch()
     const usedGuid = useAppSelector(getUsedGuid)
     const [addItem] = useAddItemMutation()
-
     const add_cartItem = async () => {
         // const state = await addItem({
         //     ProductId: item.Id,
@@ -49,7 +48,7 @@ export default function ItemCard({ item }: Props) {
                         { item.Description }
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary" component="div">
-                        { item.Сurrency + " " + item.Price + " , " + item.DiscountedPrice }
+                        { item.Сurrency + " " + item.Price + " , " }<span style={{textDecoration: 'line-through'}}>{item.DiscountedPrice}</span>
                     </Typography>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'right', p: 1 }}>

@@ -40,3 +40,8 @@ export type CartChangePayload = {
     id: number;
     value: number;
 }
+
+export type DiscountData = {
+    DiscountName: string,
+    UsedGuid: string
+}

@@ -98,10 +98,10 @@ export default function ItemCartCard({ item, count }: Props) {
             </Box>
             <Box sx={{ display: 'flex', width: '200px', flexDirection: 'column', padding: '0 8px 0 8px' }}>
                 <Typography component="div" variant="body1" sx={{ marginTop: 'auto', marginBottom: 'auto'}}>
-                    Salary: { item.Сurrency + " " + item.Price + " , " + item.DiscountedPrice}
+                    Salary: { item.Сurrency + " " + item.Price + " , "}<span style={{textDecoration: 'line-through'}}>{item.DiscountedPrice}</span>
                 </Typography>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', padding: '8px', justifyContent: 'right' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', padding: '8px', justifyContent: 'center' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sx={{textAlign: 'center'}}>
                         Count: { count }
@@ -109,7 +109,7 @@ export default function ItemCartCard({ item, count }: Props) {
                     <Grid item xs={12}>
                         <ButtonGroup variant="contained" aria-label="outlined primary button group">
                             <Button onClick={reduce_item}> - </Button>
-                            <Input defaultValue={count} sx={{width: '38px', textAlign: 'center'}} onChange={changeValue}/>
+                            <Input value={count} sx={{width: '38px'}} inputProps={{ style: {textAlign: 'center'} }} onChange={changeValue}/>
                             <Button onClick={increaseItem}> + </Button>
                             <Button onClick={delete_item}><DeleteForeverIcon /></Button>
                         </ButtonGroup>       

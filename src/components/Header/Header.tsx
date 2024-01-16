@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, startTransition  } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,7 +14,7 @@ import { CardMedia } from '@mui/material';
 import Link from '@mui/material/Link';
 import { useGetInitMutation } from '../../store/api/shopApi';
 import { useAppDispatch, useAppSelector } from '../../store/hook';
-import { getLogoImg, getUserName, updateAuthState, updateInitData } from '../../store/reducers/auth';
+import { getAuthState, getLogoImg, getUserName, updateAuthState, updateInitData } from '../../store/reducers/auth';
 import { useCreateUserMutation } from '../../store/api/userApi';
 import { getTotalCount } from '../../store/reducers/cartItem';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -32,6 +32,7 @@ export default function Header(): JSX.Element {
     const logo = useAppSelector(getLogoImg)
     const username = useAppSelector(getUserName)
     const totalCount = useAppSelector(getTotalCount)
+    const isAuth = useAppSelector(getAuthState)
     
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -56,6 +57,10 @@ export default function Header(): JSX.Element {
         }
       
         fetchUser()
+    }, [])
+
+    useEffect(() => {
+        createAdmin()
     }, [])
     
 
@@ -93,7 +98,7 @@ export default function Header(): JSX.Element {
                     />
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <Button sx={{color: 'white'}} onClick={createAdmin}>
+                        {/* <Button sx={{color: 'white'}} onClick={createAdmin}>
                             <Typography
                               variant="h6"
                               noWrap
@@ -102,7 +107,7 @@ export default function Header(): JSX.Element {
                             >
                                 Create Admin
                             </Typography>
-                        </Button>
+                        </Button> */}
                         <Button sx={{color: 'white'}}>
                             <Typography
                               variant="h6"
@@ -114,7 +119,7 @@ export default function Header(): JSX.Element {
                               
                             </Typography>
                         </Button>
-                        <IconButton size="large" aria-label="show 4 new mails" sx={{color: 'white'}}>
+                        <IconButton size="large" sx={{color: 'white'}}>
                             {
                                 totalCount > 0 ?
                                     <Badge badgeContent={totalCount} color="error">
