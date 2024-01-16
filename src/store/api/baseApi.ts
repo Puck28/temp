@@ -4,7 +4,8 @@ const baseQuery = fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_BASE_URL}/api`,
     credentials: 'include',
     prepareHeaders: (headers, { getState, endpoint }) => {
-        headers.set('Access-Control-Allow-Origin', '*')
+        headers.set('Access-Control-Allow-Origin', '*');
+        headers.set('mode', 'no-cors');
         return headers
     },
 })
