@@ -75,7 +75,7 @@ export default function ItemCartCard({ item, count }: Props) {
     }
 
     return (
-        <Card sx={{ display: 'flex' }}>
+        <Card sx={{ display: 'flex', marginBottom: '8px' }}>
             <CardMedia
                 component="img"
                 sx={{ width: 151 }}
