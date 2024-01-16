@@ -21,14 +21,15 @@ export default function ItemCard({ item }: Props) {
     const [addItem] = useAddItemMutation()
 
     const add_cartItem = async () => {
-        const state = await addItem({
-            ProductId: item.Id,
-            UserGuid: usedGuid
-        }).unwrap()
-        if(state.Name === 'Success')
-            dispatch(addCartItem(item.Id))
-        else
-            alert('failed')
+        // const state = await addItem({
+        //     ProductId: item.Id,
+        //     UserGuid: usedGuid
+        // }).unwrap()
+        // if(state.Name === 'Success')
+        //     dispatch(addCartItem(item.Id))
+        // else
+        //     alert('failed')
+        dispatch(addCartItem(item.Id))
     }
 
     return (
@@ -48,7 +49,7 @@ export default function ItemCard({ item }: Props) {
                         { item.Description }
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary" component="div">
-                        { item.Сurrency + item.Price + " , " + item.DiscountedPrice }
+                        { item.Сurrency + " " + item.Price + " , " + item.DiscountedPrice }
                     </Typography>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'right', p: 1 }}>

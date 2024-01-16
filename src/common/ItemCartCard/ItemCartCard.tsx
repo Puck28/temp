@@ -94,7 +94,7 @@ export default function ItemCartCard({ item, count }: Props) {
             </Box>
             <Box sx={{ display: 'flex', width: '200px', flexDirection: 'column', padding: '0 8px 0 8px' }}>
                 <Typography component="div" variant="body1" sx={{ marginTop: 'auto', marginBottom: 'auto'}}>
-                    Salary: { item.Сurrency + item.Price + " , " + item.DiscountedPrice}
+                    Salary: { item.Сurrency + " " + item.Price + " , " + item.DiscountedPrice}
                 </Typography>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', padding: '8px', justifyContent: 'right' }}>
