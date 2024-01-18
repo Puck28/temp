@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
-import Box from '@mui/material/Box';
+import * as React from 'react'
+import {
+    Box,
+    Grid
+} from '@mui/material';
+
 import BreadCrumb from '../../common/BreadCrumb';
-import Grid from '@mui/material/Grid';
 import ItemCartCard from '../../common/ItemCartCard';
 import TotalView from '../../common/TotalView';
 import { useAppSelector } from '../../store/hook';

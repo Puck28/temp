@@ -1,13 +1,16 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
+import {
+    Box,
+    Button,
+    ButtonGroup,
+    Card,
+    Grid,
+    Typography,
+    Input,
+} from '@mui/material';
+
 import { useAppDispatch, useAppSelector } from '../../store/hook';
-import { getAllCartItems, getAllShopItems, getPromoCode, getPromoState, getTotalPrice, updatePromoCode, updatePromoState } from '../../store/reducers/cartItem';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Input from '@mui/material/Input';
+import { getPromoCode, getPromoState, getTotalPrice, updatePromoCode, updatePromoState } from '../../store/reducers/cartItem';
 import { getUsedGuid } from '../../store/reducers/auth';
 import { useSendDiscountMutation } from '../../store/api/shopApi';
 
