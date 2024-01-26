@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import './App.css';
-
+import * as React from 'react';
 import { Suspense, lazy, LazyExoticComponent } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
 import { useCreateUserMutation } from './store/api/userApi';
 import { useGetInitMutation } from './store/api/shopApi';
 

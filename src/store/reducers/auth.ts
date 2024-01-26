@@ -7,7 +7,6 @@ type AuthState = {
     LogoImg: string,
     UsedGuid: string,
     UserName: string,
-
     isAuth: boolean
 }
 

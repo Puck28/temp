@@ -1,7 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import { Outlet } from 'react-router-dom'
-
 import Typography from '@mui/material/Typography/Typography'
+
 import Header from '../Header'
 import Footer from '../Footer'
 import { useAppSelector } from '../../store/hook'

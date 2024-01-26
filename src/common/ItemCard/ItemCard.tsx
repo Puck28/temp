@@ -1,10 +1,13 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import {
+    Box,
+    Button,
+    Card,
+    CardContent,
+    CardMedia,
+    Typography
+} from '@mui/material';
+
 import { Thing } from '../../type';
 import { useAppDispatch, useAppSelector } from '../../store/hook';
 import { addCartItem } from '../../store/reducers/cartItem';
@@ -20,15 +23,14 @@ export default function ItemCard({ item }: Props) {
     const usedGuid = useAppSelector(getUsedGuid)
     const [addItem] = useAddItemMutation()
     const add_cartItem = async () => {
-        // const state = await addItem({
-        //     ProductId: item.Id,
-        //     UserGuid: usedGuid
-        // }).unwrap()
-        // if(state.Name === 'Success')
-        //     dispatch(addCartItem(item.Id))
-        // else
-        //     alert('failed')
-        dispatch(addCartItem(item.Id))
+        const state = await addItem({
+            ProductId: item.Id,
+            UserGuid: usedGuid
+        }).unwrap()
+        if(state.Name === 'Success')
+            dispatch(addCartItem(item.Id))
+        else
+            alert('failed')
     }
 
     return (
