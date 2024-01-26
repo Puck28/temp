@@ -41,6 +41,7 @@ export default function Shop(): JSX.Element {
                         </Grid>
                         <Grid item xs={4}>
                             <TotalView />
+                            test
                         </Grid>
                     </Grid>                
                 </Box>
