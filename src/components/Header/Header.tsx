@@ -129,6 +129,7 @@ export default function Header(): JSX.Element {
                         >
                             <AccountCircle />
                             { username }
+                            This is Header part
                         </IconButton>
                     </Box>
                 </Toolbar>
